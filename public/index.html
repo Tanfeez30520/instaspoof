@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colorful Login Demo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c, #42a5f5);
+      background-size: 300% 300%;
+      animation: gradientBG 10s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .form-card {
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      padding: 30px 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      width: 320px;
+      text-align: center;
+    }
+
+    .form-card h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+      text-align: left;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background: #f0f0f0;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      background: #e8f0fe;
+      border: 2px solid #42a5f5;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #42a5f5, #4776e6);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(71, 118, 230, 0.4);
+    }
+
+    .note {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: 600;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h2>Login Demo</h2>
+    <form id="loginForm">
+      <label for="userId">Username</label>
+      <input type="text" id="userId" placeholder="Enter Username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter Password" required />
+
+      <button type="submit">Sign In</button>
+    </form>
+    <p class="note">⚠️ This is a demo form for learning only. It does not save any data.</p>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      result.style.display = "block";
+      result.textContent = "✅ Login simulated successfully (Demo Only)";
+    });
+  </script>
+</body>
+</html>
